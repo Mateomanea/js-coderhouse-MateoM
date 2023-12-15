@@ -1,27 +1,39 @@
+let nombreUsuario = prompt('Cual es su nombre ?').toLowerCase();
 
+if (nombreUsuario === 'rulo19') {
 
+    alert(`Ganaste crack. Te regalamos un jamon por llamarte ${nombreUsuario}`);
 
+} else {
+  
+  mayuscula(nombreUsuario);
+  juegoPiedraPapelTijera();
 
+};
 
+function opcionUsuario () {
 
+  let opcionesValidas = ['piedra', 'papel', 'tijera'];
 
+  let usuario = prompt(`
+  ${nombreUsuario} elige:
+  Piedra
+  Pap
+  Tijera
+  `);
 
+};
 
+function mayuscula (mayus) {
 
+  return mayus.charAt(0).toUpperCase() + mayus.slice(1);
 
+}
 
+function juegoPiedraPapelTijera () {
 
-
-
-
-
-
-
-
-
-
-
-
+    opcionUsuario();
+}
 
 
 
