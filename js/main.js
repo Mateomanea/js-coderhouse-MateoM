@@ -1,4 +1,43 @@
-let nombre = prompt("Como es su nombre ?").toLowerCase();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ~~~~~~~~~~~~~~~~~~~~ CÓDIGO DE LA PRIMER PRE ENTREGA ~~~~~~~~~~~~~~~~~~~~
+
+/* let nombre = prompt("Como es su nombre ?").toLowerCase();
 
 if (nombre === "rulo19") {
   alert("Ganaste crack!");
@@ -53,3 +92,4 @@ function juegoPiedraPapelTijera() {
     alert("Lo sentimos. La computadora gana");
   }
 }
+ */
