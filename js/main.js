@@ -1,40 +1,61 @@
-let nombreUsuario = prompt('Cual es su nombre ?').toLowerCase();
+class piedraPapelTijera {
 
-if (nombreUsuario === 'rulo19') {
+  pedirNombre() {
 
-    alert(`Ganaste crack. Te regalamos un jamon por llamarte ${nombreUsuario}`);
+    let nombre = prompt('Como te llamas ?').toLowerCase();
+    return this.mayuscula(nombre);
 
-} else {
-  
-  mayuscula(nombreUsuario);
-  juegoPiedraPapelTijera();
+  }
 
-};
+  mayuscula(txt) {
 
-function opcionUsuario () {
+    return txt.charAt(0).toUpperCase() + txt.slice(1);
 
-  let opcionesValidas = ['piedra', 'papel', 'tijera'];
+  }
 
-  let usuario = prompt(`
-  ${nombreUsuario} elige:
-  Piedra
-  Pap
-  Tijera
-  `);
+  opciones() {
 
-};
+    const OPCIONES_VALIDAS = ['pieda', 'papel', 'tijera'];
+    let opcionUsuario = prompt(
+      `
+      ${nombreUsuario} elige:
+      Piedra
+      Papel
+      Tijera
+      `
+    ).toLowerCase();
 
-function mayuscula (mayus) {
+    while (!OPCIONES_VALIDAS.includes(opcionUsuario)) {
 
-  return mayus.charAt(0).toUpperCase() + mayus.slice(1);
+      opcionUsuario = prompt(
+        `
+        Por favor ${nombreUsuario} elige:
+        Piedra
+        Papel
+        Tijera
+        `
+      ).toLowerCase();
 
+    }
+
+    return opcionUsuario;
+
+  }
 }
 
-function juegoPiedraPapelTijera () {
+const JUEGO = new piedraPapelTijera();
 
-    opcionUsuario();
-}
+let nombreUsuario = JUEGO.pedirNombre();
 
+if (nombreUsuario.toLowerCase() === 'rulo19') {
+
+  alert(`Ganaste crack. Te regalamos un jamon por llamarte ${nombreUsuario}`);
+
+} else if (nombreUsuario !== 'rulo19') {
+
+  JUEGO.opciones();
+
+};
 
 
 
