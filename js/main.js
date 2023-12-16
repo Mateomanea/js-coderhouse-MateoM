@@ -15,7 +15,7 @@ class piedraPapelTijera {
 
   opciones() {
 
-    const OPCIONES_VALIDAS = ['pieda', 'papel', 'tijera'];
+    const OPCIONES_VALIDAS = ['piedra', 'papel', 'tijera'];
     let opcionUsuario = prompt(
       `
       ${nombreUsuario} elige:
@@ -51,9 +51,9 @@ if (nombreUsuario.toLowerCase() === 'rulo19') {
 
   alert(`Ganaste crack. Te regalamos un jamon por llamarte ${nombreUsuario}`);
 
-} else if (nombreUsuario !== 'rulo19') {
+} else {
 
-  JUEGO.opciones();
+  let opcionElegida = JUEGO.opciones(); 
 
 };
 
