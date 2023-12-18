@@ -47,6 +47,7 @@ class piedraPapelTijera {
     const GANADORAS = [ ['piedra', 'tijera'], ['papel', 'piedra'], ['tijera', 'papel'] ];
 
     let resultado;
+
     GANADORAS.forEach(com => {
 
       if (com[0] === opcionUsuario && com[1] === opcionRandom) {
@@ -64,23 +65,37 @@ class piedraPapelTijera {
       }
 
     });
+
+    return resultado;
+  }
+
+  iniciarJuego() {
+
+    const esRulo = this.nombre === 'rulo19';
+    
+    if (esRulo) {
+      alert(`${this.nombre} Ganaste crack!! `)
+    } else {
+      alert(`${this.mayuscula(this.nombre)} comenzemos el juego`);
+      const opcionUsuario = this.opciones(this.nombre);
+      const opcionPc = Math.floor(Math.random() * 3);
+      const opciones = ['piedra', 'papel', 'tijera'];
+      const opcionPcRandom = opciones[opcionPc];
+
+      alert(`
+      ${this.nombre} elegiste: ${opcionUsuario}
+      Computadora eligio: ${opcionPcRandom}
+      `);
+
+      const resultado = this.combinaciones(opcionUsuario, opcionPcRandom);
+      alert(resultado);
+    }
   }
 }
 
 const JUEGO = new piedraPapelTijera();
 
-let nombreUsuario = JUEGO.pedirNombre();
-
-if (nombreUsuario.toLowerCase() === 'rulo19') {
-
-  alert(`Ganaste crack. Te regalamos un jamon por llamarte ${nombreUsuario}`);
-
-} else {
-
-  let opcionElegida = JUEGO.opciones(); 
-
-};
-
+JUEGO.iniciarJuego();
 
 
 
