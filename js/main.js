@@ -41,6 +41,30 @@ class piedraPapelTijera {
     return opcionUsuario;
 
   }
+
+  combinaciones(opcionUsuario, opcionRandom) {
+    
+    const GANADORAS = [ ['piedra', 'tijera'], ['papel', 'piedra'], ['tijera', 'papel'] ];
+
+    let resultado;
+    GANADORAS.forEach(com => {
+
+      if (com[0] === opcionUsuario && com[1] === opcionRandom) {
+        
+        resultado = `Felicitaciones ${this.mayuscula(opcionUsuario)}! Ganaste`
+
+      } else if (opcionUsuario === opcionRandom) {
+
+        resultado = 'Empate!';
+
+      } else {
+        
+        resultado = 'Computadora gana.'
+
+      }
+
+    });
+  }
 }
 
 const JUEGO = new piedraPapelTijera();
