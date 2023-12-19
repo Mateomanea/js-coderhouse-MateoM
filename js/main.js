@@ -48,29 +48,31 @@ class piedraPapelTijera {
 
   combinaciones(opcionUsuario, opcionRandom) {
     
+    let usuarioGana = false;
     const GANADORAS = [ ['piedra', 'tijera'], ['papel', 'piedra'], ['tijera', 'papel'] ];
-
-    let resultado = '';
 
     GANADORAS.forEach(com => {
 
       if (com[0] === opcionUsuario && com[1] === opcionRandom) {
-        
-        resultado = `Felicitaciones ${this.mayuscula(this.nombre)}! Ganaste`
 
-      } else if (opcionUsuario === opcionRandom) {
-
-        resultado = 'Empate!';
-
-      } else {
-        
-        resultado = `Computadora gana`;
+        usuarioGana = true;
 
       }
-
     });
+    
+    if (usuarioGana) {
 
-    return resultado;
+      return `Felicitaciones ${this.mayuscula(this.nombre)}! Ganaste`
+     
+    } else if (opcionUsuario === opcionRandom) {
+
+      return 'Es un empate'
+
+    } else { 
+
+      return 'Computadora gana!'
+
+    }
   }
 
   iniciarJuego() {
@@ -102,7 +104,7 @@ class piedraPapelTijera {
 
       }
 
-      continuar = confirm('Aceptas la revancha ?');
+      continuar = confirm('Queres jugar de nuevo ?');
 
       if (continuar) {
         this.resetear();
