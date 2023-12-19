@@ -1,5 +1,9 @@
 class piedraPapelTijera {
 
+  constructor() {
+    this.nombre = this.pedirNombre();
+  }
+
   pedirNombre() {
 
     let nombre = prompt('Como te llamas ?').toLowerCase();
@@ -18,7 +22,7 @@ class piedraPapelTijera {
     const OPCIONES_VALIDAS = ['piedra', 'papel', 'tijera'];
     let opcionUsuario = prompt(
       `
-      ${nombreUsuario} elige:
+      ${this.nombre} elige:
       Piedra
       Papel
       Tijera
@@ -46,7 +50,7 @@ class piedraPapelTijera {
     
     const GANADORAS = [ ['piedra', 'tijera'], ['papel', 'piedra'], ['tijera', 'papel'] ];
 
-    let resultado;
+    let resultado = '';
 
     GANADORAS.forEach(com => {
 
@@ -74,21 +78,27 @@ class piedraPapelTijera {
     const esRulo = this.nombre === 'rulo19';
     
     if (esRulo) {
+
       alert(`${this.nombre} Ganaste crack!! `)
+
     } else {
-      alert(`${this.mayuscula(this.nombre)} comenzemos el juego`);
-      const opcionUsuario = this.opciones(this.nombre);
+
+      alert(`${this.mayuscula(this.nombre)} comencemos el juego`);
+
+      const opcionUsuario = this.opciones();
       const opcionPc = Math.floor(Math.random() * 3);
       const opciones = ['piedra', 'papel', 'tijera'];
       const opcionPcRandom = opciones[opcionPc];
 
       alert(`
-      ${this.nombre} elegiste: ${opcionUsuario}
-      Computadora eligio: ${opcionPcRandom}
+      ${this.nombre}: ${opcionUsuario}
+      Computadora: ${opcionPcRandom}
       `);
 
       const resultado = this.combinaciones(opcionUsuario, opcionPcRandom);
+
       alert(resultado);
+
     }
   }
 }
