@@ -33,7 +33,7 @@ class piedraPapelTijera {
 
       opcionUsuario = prompt(
         `
-        Por favor ${nombreUsuario} elige:
+        Por favor ${this.nombre} elige:
         Piedra
         Papel
         Tijera
@@ -56,7 +56,7 @@ class piedraPapelTijera {
 
       if (com[0] === opcionUsuario && com[1] === opcionRandom) {
         
-        resultado = `Felicitaciones ${this.mayuscula(opcionUsuario)}! Ganaste`
+        resultado = `Felicitaciones ${this.mayuscula(this.nombre)}! Ganaste`
 
       } else if (opcionUsuario === opcionRandom) {
 
@@ -64,7 +64,7 @@ class piedraPapelTijera {
 
       } else {
         
-        resultado = 'Computadora gana.'
+        resultado = `Computadora gana`;
 
       }
 
@@ -75,32 +75,46 @@ class piedraPapelTijera {
 
   iniciarJuego() {
 
-    const esRulo = this.nombre === 'rulo19';
+    let continuar = true;
+
+    while (continuar) {
+      const esRulo = this.nombre === 'rulo19';
     
-    if (esRulo) {
+      if (esRulo) {
 
-      alert(`${this.nombre} Ganaste crack!! `)
+       alert(`${this.nombre} Ganaste crack!! `)
 
-    } else {
+      } else {
 
-      alert(`${this.mayuscula(this.nombre)} comencemos el juego`);
+        const opcionUsuario = this.opciones();
+        const opcionPc = Math.floor(Math.random() * 3);
+        const opciones = ['piedra', 'papel', 'tijera'];
+        const opcionPcRandom = opciones[opcionPc];
 
-      const opcionUsuario = this.opciones();
-      const opcionPc = Math.floor(Math.random() * 3);
-      const opciones = ['piedra', 'papel', 'tijera'];
-      const opcionPcRandom = opciones[opcionPc];
+        alert(`
+          ${this.nombre}: ${opcionUsuario}
+          Computadora: ${opcionPcRandom}
+        `);
 
-      alert(`
-      ${this.nombre}: ${opcionUsuario}
-      Computadora: ${opcionPcRandom}
-      `);
+        const resultado = this.combinaciones(opcionUsuario, opcionPcRandom);
 
-      const resultado = this.combinaciones(opcionUsuario, opcionPcRandom);
+        alert(resultado);
 
-      alert(resultado);
+      }
+
+      continuar = confirm('Aceptas la revancha ?');
+
+      if (continuar) {
+        this.resetear();
+      }
 
     }
   }
+
+  resetear(){
+
+  }
+
 }
 
 const JUEGO = new piedraPapelTijera();
