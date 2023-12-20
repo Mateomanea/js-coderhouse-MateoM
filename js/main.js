@@ -1,12 +1,13 @@
 class piedraPapelTijera {
-
   constructor() {
+
     this.nombre = this.pedirNombre();
+
   }
 
   pedirNombre() {
 
-    let nombre = prompt('Como te llamas ?').toLowerCase();
+    let nombre = prompt("Como te llamas ?").toLowerCase();
     return this.mayuscula(nombre);
 
   }
@@ -19,118 +20,103 @@ class piedraPapelTijera {
 
   opciones() {
 
-    const OPCIONES_VALIDAS = ['piedra', 'papel', 'tijera'];
+    const OPCIONES_VALIDAS = ["piedra", "papel", "tijera"];
+
     let opcionUsuario = prompt(
-      `
-      ${this.nombre} elige:
-      Piedra
-      Papel
-      Tijera
-      `
+      `${this.nombre}: Piedra Papel o Tijera`
     ).toLowerCase();
 
     while (!OPCIONES_VALIDAS.includes(opcionUsuario)) {
 
       opcionUsuario = prompt(
-        `
-        Por favor ${this.nombre} elige:
-        Piedra
-        Papel
-        Tijera
-        `
+        `Por favor ${this.nombre} elige: Piedra Papel o Tijera`
       ).toLowerCase();
 
     }
-
     return opcionUsuario;
-
   }
 
   combinaciones(opcionUsuario, opcionRandom) {
+
+    const GANADORAS = [
+      ["piedra", "tijera"],
+      ["papel", "piedra"],
+      ["tijera", "papel"],
+    ];
     
     let usuarioGana = false;
-    const GANADORAS = [ ['piedra', 'tijera'], ['papel', 'piedra'], ['tijera', 'papel'] ];
 
-    GANADORAS.forEach(com => {
+    GANADORAS.forEach((com) => {
 
       if (com[0] === opcionUsuario && com[1] === opcionRandom) {
-
         usuarioGana = true;
-
       }
+      
     });
-    
+
     if (usuarioGana) {
 
-      return `Felicitaciones ${this.mayuscula(this.nombre)}! Ganaste`
-     
+      return `Felicitaciones ${this.mayuscula(this.nombre)}! Ganaste`;
+
     } else if (opcionUsuario === opcionRandom) {
 
-      return 'Es un empate'
+      return "Empate";
 
-    } else { 
+    } else {
 
-      return 'Computadora gana!'
+      return "Computadora gana!";
 
     }
   }
 
   iniciarJuego() {
-
     let continuar = true;
 
     while (continuar) {
-      const esRulo = this.nombre === 'rulo19';
-    
+
+      const esRulo = this.nombre.toLowerCase() === "rulo19";
+
       if (esRulo) {
 
-       alert(`${this.nombre} Ganaste crack!! `)
+        alert(`${this.nombre} Ganaste crack!! `);
+        this.nombre = this.pedirNombre();
+        continue;
 
       } else {
 
         const opcionUsuario = this.opciones();
+
         const opcionPc = Math.floor(Math.random() * 3);
-        const opciones = ['piedra', 'papel', 'tijera'];
+        const opciones = ["piedra", "papel", "tijera"];
         const opcionPcRandom = opciones[opcionPc];
 
         alert(`
+
           ${this.nombre}: ${opcionUsuario}
           Computadora: ${opcionPcRandom}
+
         `);
 
         const resultado = this.combinaciones(opcionUsuario, opcionPcRandom);
 
         alert(resultado);
-
       }
 
-      continuar = confirm('Queres jugar de nuevo ?');
+      continuar = confirm("Queres jugar de nuevo ?");
 
       if (continuar) {
-        this.resetear();
-      }
 
+        this.resetear();
+
+      }
     }
   }
 
-  resetear(){
-
-  }
-
+  resetear() {}
 }
 
 const JUEGO = new piedraPapelTijera();
-
 JUEGO.iniciarJuego();
-
-
-
-
-
-
-
-
-
 
 
 // ~~~~~~~~~~~~~~~~~~~~ CÓDIGO DE LA PRIMER PRE ENTREGA ~~~~~~~~~~~~~~~~~~~~
